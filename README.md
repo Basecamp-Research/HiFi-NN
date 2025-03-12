@@ -1,5 +1,5 @@
 ![](assets/bcr_logo.png)
-# HI-FINN: Hierarchically fine-tuned nearest neighbours for EC number annotation
+# HiFi-NN: Hierarchically fine-tuned nearest neighbours for EC number annotation
 
 This tool serves as a method by which a query sequence(s) can be compared to a set of protein sequence embeddings to find those most similar to each query. It is assumed that distances encoded in the space represented by the reference embeddings are meaningful representations of protein similarity. To this end we provide a model which has been trained using contrastive learning to map ESM-2 embeddings to a new space which accurately refelcts the distances between proteins which contain similar annotations.
 

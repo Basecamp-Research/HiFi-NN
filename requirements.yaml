@@ -37,7 +37,7 @@ dependencies:
   - packaging=23.2=py312hca03da5_0
   - pip=24.0=py312hca03da5_0
   - python=3.12.4=h99e199e_1
-  - pytorch=2.3.0=gpu_mps_py312hf36b297_100
+  - pytorch=2.6.0
   - pytorch-lightning=2.0.3=py312hca03da5_0
   - pyyaml=6.0.1=py312h80987f9_0
   - readline=8.2=h1a28f6b_0

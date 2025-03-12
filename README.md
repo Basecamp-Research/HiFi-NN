@@ -11,7 +11,7 @@ This tool serves as a method by which a query sequence(s) can be compared to a s
 
 # Setup
 ### Installation
-Clone this repository ` git clone https://github.com/Basecamp-Research/HiFi-NN.git` and install the requirements from the `requirements.txt` file.
+Clone this repository `git clone https://github.com/Basecamp-Research/HiFi-NN.git` and install the requirements from the `requirements.txt` file.
 ```
 python -m venv ./hifinn_venv
 source ./hifinn_venv/bin/activate

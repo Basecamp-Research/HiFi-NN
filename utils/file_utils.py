@@ -218,8 +218,11 @@ def load_embeddings(folder: str) -> typing.Tuple[np.ndarray, typing.List[str]]:
     return np.stack(all_embs), all_ids
 
 def check_folder_empty(path):
-    with os.scandir(path) as f_iter:
-        if any(f_iter):
-            return False # Folder is empty
-        else:
-            return True
+    if os.path.exists(path):
+        with os.scandir(path) as f_iter:
+            if any(f_iter):
+                return False # Folder is empty
+            else:
+                return True
+    else:
+        return False # Folder does not exist

@@ -1,0 +1,5 @@
+input: ../ModelData/price.fasta # the input sequences we wish to make our database from
+model_path: '../ModelData/swissprot_reduced30_epoch_150.ckpt' # the model we want to use to embed our sequences
+index_path: './ModelData/price' # the path we want to save our vector index to
+ids: # if we only want to build our index from a subset of input [OPTIONAL]
+device: 'cpu'

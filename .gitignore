@@ -1,0 +1,12 @@
+*__pycache__/
+*.DS_Store
+*.mypy_cache
+nohup.out
+wandb/
+venv/
+plots/
+*.out
+esm/
+esm_embeddings/
+hifinn_embeddings/
+ModelData/

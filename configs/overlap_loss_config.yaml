@@ -1,0 +1,48 @@
+wandb: true
+project_name: hifinn
+batch_size: 8
+train_ids_path: '../ModelData/reduced30_train.fasta'
+test_ids_path: '../ModelData/cluster30_seqs_missing_ec_removed.fasta'
+val_ids_path: '/' 
+embeddings_path: '../embeddings/'
+annotations: '../ModelData/swissprot_all_ec_nums.json'
+epochs: 250
+save_path: './overlap_loss_ckpts/'
+num_workers: 60
+checkpoint_path: ''
+margin_loss: 
+  margins: 
+    - 1
+    - 0.9
+    - 0.8
+    - 0.7
+  metric: 'cosine'
+optimiser:
+  weight_decay: 0.1
+  lr: 0.0001 
+  max_lr: 0.01
+  min_lr: 0.00005 
+  num_warmup_epochs: 1
+  gradient_clip_val: 0.1
+  eps: 1e-08
+  betas:
+    - 0.9
+    - 0.999
+normalize: True
+dropout: 0.00
+weights: 
+  - 1
+  - 0.9
+  - 0.8
+  - 0.7
+model:
+  hidden_size_1: 1024
+  output_size: 512
+train_on_classes: false
+devices:
+  - 0
+  - 1
+  - 2
+  - 3
+precision: '16-mixed'
+strategy: 'ddp'

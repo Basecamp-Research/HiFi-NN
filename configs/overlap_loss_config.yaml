@@ -1,11 +1,11 @@
 wandb: true
 project_name: hifinn
 batch_size: 8
-train_ids_path: '../ModelData/reduced30_train.fasta'
-test_ids_path: '../ModelData/cluster30_seqs_missing_ec_removed.fasta'
+train_ids_path: './ModelData/reduced30_train.fasta'
+test_ids_path: './ModelData/cluster30_seqs_missing_ec_removed.fasta'
 val_ids_path: '/' 
-embeddings_path: '../embeddings/'
-annotations: '../ModelData/swissprot_all_ec_nums.json'
+embeddings_path: './embeddings/'
+annotations: './ModelData/swissprot_all_ec_nums.json'
 epochs: 250
 save_path: './overlap_loss_ckpts/'
 num_workers: 60

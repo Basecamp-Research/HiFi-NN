@@ -32,7 +32,7 @@ cd ../
 ```
 
 ### Downloading requisite files
-The files necessary to run HiFi-NN can be downloaded from the following urls:
+The files necessary to run HiFi-NN can be downloaded from the following url:
 `wget https://zenodo.org/records/15013616/files/ModelData.zip`
 
 # Inference

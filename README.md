@@ -14,12 +14,6 @@ This tool serves as a method by which a query sequence(s) can be compared to a s
 ### Installation
 Clone this repository `git clone https://github.com/Basecamp-Research/HiFi-NN.git` and install the requirements from the `requirements.txt` file.
 ```
-python -m venv ./hifinn_venv
-source ./hifinn_venv/bin/activate
-pip install -r requirements.txt
-```
-Alternatively, requirements installation can be done via conda as follows.
-```
 conda env create -f requirements.yaml
 ```
 ### Requirements

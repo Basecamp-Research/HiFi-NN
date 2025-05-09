@@ -82,7 +82,7 @@ def main():
             device=device,
         )
     else:
-        raise ValueError("Program should have crashed by now...")
+        raise ValueError(f"Invalid input format: {config['input']}. Must be either a string, a path to a folder of embeddings or a fasta file.")
     # free up memory
     del model
     
@@ -100,9 +100,10 @@ def main():
         metric="cosine",
         gpu=False,
     )
-    id_to_neighbours = filter_by_distance(
-        id_to_neighbours, dist_cutoff=config["distance_cutoff"]
-    )
+    if config["return_distance"] and config["return_confidence"]:
+        id_to_neighbours = filter_by_distance(
+            id_to_neighbours, dist_cutoff=config["distance_cutoff"]
+        )
 
     if config["output_path"] is None:
         if input_format == "sequence":

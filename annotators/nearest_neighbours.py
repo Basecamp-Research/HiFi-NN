@@ -32,12 +32,12 @@ def filter_by_distance(
         confidence score retained.
     """
     if dist_cutoff < 0:
-        raise ValueError("dist_cutoff cannot be negative.")
+        raise ValueError(f"Distance cutoff cannot be negative. Distance cutoff entered: {dist_cutoff}")
     new_annos: defaultdict = defaultdict(dict)
     for id, preds in annos.items():
         for ec, scores in preds.items():
             if scores[1] < dist_cutoff:
-                new_annos[id].update({ec: scores[0]})
+                new_annos[id].update({ec: scores})
     return new_annos
 
 
@@ -308,7 +308,7 @@ class VectorStore:
 
     def query(
         self, queries: np.ndarray, gpu: bool = False
-    ) -> typing.Tuple[np.ndarray, typing.List[typing.List[float]]]:
+    ) -> typing.Tuple[np.ndarray, typing.List[typing.List[int]]]:
         """
         Search our queries against the vector
         database.

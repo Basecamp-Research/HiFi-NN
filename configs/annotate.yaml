@@ -5,7 +5,7 @@ model_path: ./ModelData/swissprot_reduced30_epoch_150.ckpt
 ids: ./ModelData/reduced30_ckpt150_sorted_ids.json # the ids pertaining to the entries of our vector index
 index: ./ModelData/reduced30_ckpt150.index # faiss vector index file
 output_path: ./cluster30_annos.json # where we want to save our annotations to
-distance_cutoff: 1.0 
+distance_cutoff: 1.0
 device: 'cpu'
 return_distance: True
 return_confidence: True

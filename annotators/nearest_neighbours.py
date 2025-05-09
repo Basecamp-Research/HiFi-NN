@@ -37,7 +37,10 @@ def filter_by_distance(
     for id, preds in annos.items():
         for ec, scores in preds.items():
             if scores[1] < dist_cutoff:
-                new_annos[id].update({ec: scores})
+                new_annos[id].update({ec: {
+                    'conf':scores[0],
+                    'dist':scores[1]}
+                })
     return new_annos
 
 

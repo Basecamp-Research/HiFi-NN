@@ -7,6 +7,7 @@ This tool serves as a method by which a query sequence(s) can be compared to a s
 # Contents
 - [Setup](#setup)
 - [Inference](#inference)
+- [Docker Usage](#docker-usage)
 - [Creating an index](#creating-an-index)
 - [Training](#training)
 
@@ -42,6 +43,30 @@ python annotate.py
 ```
 
 The above command will transfer the annotations of the _k_ nearest neighbours to query protein(s) along with an associated confidence score.
+
+# Docker Usage
+### Building the Docker image
+First, build the Docker image:
+```
+docker build -t hifinn .
+```
+
+### Running with Docker
+Before running the Docker container, you need to download the ModelData locally:
+```
+wget https://zenodo.org/records/15013616/files/ModelData.zip
+unzip ModelData.zip
+```
+
+Then run the container with mounted volumes:
+```
+docker run -v $(pwd)/ModelData:/app/ModelData -v $(pwd):/app/output hifinn
+```
+
+This will:
+- Mount your local ModelData folder to `/app/ModelData` in the container
+- Mount your current directory to `/app/output` so you can access the annotation results locally
+- The annotations will be saved as, for illustration purposes `cluster30_annos.json`, in your local directory
 
 # Creating an index
 We can construct a FAISS index from a folder of ESM embeddings or a FASTA file by simply running the following script.  The index created can then later be used for annotation, as outlined above. 

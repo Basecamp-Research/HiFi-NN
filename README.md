@@ -42,7 +42,15 @@ Then run:
 python annotate.py
 ```
 
-The above command will transfer the annotations of the _k_ nearest neighbours to query protein(s) along with an associated confidence score.
+The default setttings for the above command will transfer the annotations of the _k_ nearest neighbours to query protein(s) along with an associated confidence score and minimum distance to each EC. There are three alternative options for the format in which the _k_ nearest neighbours can be used to annotate a particular protein sequence:
+- _return distance_ = True, _return confidence_ = False:
+  - This will annotate each query sequence with the EC numbers contained in its _k_ nearest neighbours and the minimum distance amongst these neighbours to each unique EC number. 
+
+- _return distance_ = False, _return confidence_ = True:
+  - This will annotate each query sequence with the EC numbers contained in its _k_ nearest neighbours and the confidence score associated with each EC. 
+
+- _return distance_ = False, _return confidence_ = False:
+  - This will annotate each query sequence with the _ids_ of its _k_ nearest neighbours.
 
 # Docker Usage
 ### Building the Docker image
@@ -60,13 +68,12 @@ unzip ModelData.zip
 
 Then run the container with mounted volumes:
 ```
-docker run -v $(pwd)/ModelData:/app/ModelData -v $(pwd):/app/output hifinn
+docker run -v $(pwd)/ModelData:/app/ModelData -v $(pwd):/app/output --shm-size '2gb' hifinn
 ```
-
+PyTorch will share data between processes using shared memory. Therefore if multiprocessing is used to load data then the shared memory segment size used by the container may not be enough. In the above example we increase the default from 64mb to 2gb. 
 This will:
-- Mount your local ModelData folder to `/app/ModelData` in the container
-- Mount your current directory to `/app/output` so you can access the annotation results locally
-- The annotations will be saved as, for illustration purposes `cluster30_annos.json`, in your local directory
+- Mount your local ModelData folder to `/app/ModelData` in the container, we will also save the models predictions here
+- The annotations will be saved as, for illustration purposes `cluster30_annos.json`, in ModelData
 
 # Creating an index
 We can construct a FAISS index from a folder of ESM embeddings or a FASTA file by simply running the following script.  The index created can then later be used for annotation, as outlined above. 
